@@ -16,27 +16,20 @@ class Enums
 
   # try to get an enum using the Enums class
   def self.method_missing(m, *_args, &_block)
-    if @enums.key? m
-      @enums[m]
-    else
-      fail NoMethodError, "NoMethodError: undefined method `#{m}` for Enums"
-    end
+    error_message = "NoMethodError: undefined method `#{m}` for Enums"
+    @enums[m] || (fail NoMethodError, error_message)
   end
 
   # creates a new enum
   def initialize(enum_name, enum_values)
-    @name = enum_name
-    @values = enum_values
+    @name, @values = enum_name, enum_values
   end
 
   # check if enum contains value
   def method_missing(m, *_args, &_block)
-    if @values.include? m
-      m
-    else
-      error = "NoMethodError: undefined method `#{m}` for #{inpect}"
-      fail NoMethodError, error
-    end
+    return m if @values.include? m
+    error = "NoMethodError: undefined method `#{m}` for #{inpect}"
+    fail NoMethodError, error
   end
 end
 

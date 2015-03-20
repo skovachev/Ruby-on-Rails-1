@@ -1,5 +1,5 @@
 # Ruby-on-Rails-1
-The first edition of the Ruby on Rails course in HackBulgaria. This is the follow-up course after https://github.com/HackBulgaria/Core-Ruby-1
+All assignments and solutions for the
 
 ```
   _____         _                             _____         _  _      
@@ -11,7 +11,4 @@ The first edition of the Ruby on Rails course in HackBulgaria. This is the follo
                         __/ |                                         
                        |___/                                          
 ```
-
-## Course Program
-
-**Coming soon ...**
+course at HackBulgaria.

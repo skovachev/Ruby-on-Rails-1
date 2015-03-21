@@ -16,9 +16,6 @@ class Object
   def try(method_name = nil, &block)
     if block_given?
       instance_eval(&block) unless nil?
-      # proc = Proc.new { the_desired_self.instance_eval(&block) }
-      # proc.call(self) unless nil?
-      # yield self unless nil?
     else
       send(method_name) unless nil?
     end

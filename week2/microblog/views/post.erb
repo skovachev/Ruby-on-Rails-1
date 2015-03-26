@@ -1,0 +1,24 @@
+<a href="/" class='btn btn-link'>&laquo; Back to homepage</a>
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3><%= post.title %></h3>        
+    </div>
+        
+    <div class="panel-body">
+        <p><%= post.content %></p>
+    </div>
+    
+    <div class="panel-footer tags">
+        <% post.tags.each do |tag| %>
+            <span class="label label-default"><%= tag %></span>
+        <% end %>
+    </div>
+</div>
+
+<p>
+    <form action="/<%= post.id %>" method='post'>
+        <input name="_method" type="hidden" value="delete" />
+        <button type='submit' class='btn btn-danger'>Delete post</button>
+    </form>
+</p>

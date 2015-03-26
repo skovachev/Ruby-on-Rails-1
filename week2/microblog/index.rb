@@ -34,11 +34,12 @@ get '/:id' do
   post = app.get_post(params[:id])
 
   if post.nil?
-    redirect '/'
+    status 404
+    erb :oops
+  else
+    #render post view
+    erb :post, :locals => {:post => post}
   end
-
-  #render post view
-  erb :post, :locals => {:post => post}
 end
 
 delete '/:id' do
@@ -52,4 +53,10 @@ get '/search/:tag' do
   posts = app.get_posts_for_tag tag
 
   erb :by_tag, :locals => {:tag => tag, :posts => posts}
+end
+
+# 404 Error!
+not_found do
+  status 404
+  erb :oops
 end

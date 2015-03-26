@@ -15,7 +15,7 @@
 
 <% if posts.present? %>
     <% posts.each do |post_id, post| %>
-        <%= erb :_post_list, :locals => {:post => post, :post_id => post_id} %>
+        <%= erb :_post_list, locals: { post: post, post_id: post_id } %>
     <% end %>
 <% else %>
     <p>No posts exist yet.</p>

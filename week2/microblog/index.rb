@@ -4,16 +4,16 @@ require_relative 'app/app'
 app = App.new
 
 enable :sessions
-set :public_folder, Proc.new { File.join(root, "public") }
+set :public_folder, proc { File.join(root, 'public') }
 
-#show posts list
+# show posts list
 get '/' do
-  all_posts = app.posts 
+  all_posts = app.posts
   tags = app.all_tags
-  erb :index, :locals => {:posts => all_posts, :tags => tags}
+  erb :index, locals: { posts: all_posts, tags: tags }
 end
 
-#show post form
+# show post form
 get '/new' do
   erb :post_new
 end
@@ -37,22 +37,22 @@ get '/:id' do
     status 404
     erb :oops
   else
-    #render post view
-    erb :post, :locals => {:post => post}
+    # render post view
+    erb :post, locals: { post: post }
   end
 end
 
 delete '/:id' do
   app.delete_post(params[:id])
-  #respond based on success -> send different message
+  # respond based on success -> send different message
   redirect '/'
 end
 
 get '/search/:tag' do
   tag = params[:tag]
-  posts = app.get_posts_for_tag tag
+  posts = app.posts_for_tag tag
 
-  erb :by_tag, :locals => {:tag => tag, :posts => posts}
+  erb :by_tag, locals: { tag: tag, posts: posts }
 end
 
 # 404 Error!

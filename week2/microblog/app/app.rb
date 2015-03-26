@@ -5,7 +5,7 @@ class App
   @next_post_id = 1
 
   class << self
-    def get_next_post_id
+    def next_post_id
       @next_post_id += 1
     end
   end
@@ -38,12 +38,12 @@ class App
   def index_post_by_tags(post_id, content)
     tags = content.scan(/#(\w+)/).flatten
     tags.each do |tag|
-      @posts_by_tag[tag] = [] if !@posts_by_tag.key?(tag)
+      @posts_by_tag[tag] = [] unless @posts_by_tag.key?(tag)
       @posts_by_tag[tag] << post_id
     end
   end
 
-  def get_posts_for_tag(tag)
+  def posts_for_tag(tag)
     @posts_by_tag[tag].map { |post_id| @posts[post_id] }.compact
   end
 
@@ -51,12 +51,12 @@ class App
     post = Post.new title, content
     valid = post.valid?
     if valid
-      post.id = App.get_next_post_id
+      post.id = App.next_post_id
 
       # get post tags
       tags = index_post_by_tags post.id, content
 
-      #save post and tags
+      # save post and tags
       post.tags = tags
       @posts[post.id] = post
     end

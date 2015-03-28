@@ -1,40 +1,39 @@
 require_relative 'tag'
 
 class Post
-  
   class << self
     def build_from_db(row)
       post = Post.new(row[1], row[2], row[0]) unless row.nil?
       # get tags for post
-      unless post.nil?
-        post.tags = Tag.find_for_post(post.id).map(&:name)
-      end
+      post.tags = Tag.find_for_post(post.id).map(&:name) unless post.nil?
+
       post
     end
 
     def find_by_id(id)
-      row = $db.get_first_row("SELECT id, title, content FROM posts WHERE id=?", [id])
+      sql = 'SELECT id, title, content FROM posts WHERE id=?'
+      row = DB.get_first_row(sql, [id])
       Post.build_from_db row
     end
 
     def find_all
-      $db.execute("SELECT id, title, content FROM posts").map do |row|
+      DB.execute('SELECT id, title, content FROM posts').map do |row|
         Post.build_from_db row
       end
     end
 
     def delete_by_id(id)
-      $db.execute("DELETE FROM posts WHERE id=?", [id])
+      DB.execute('DELETE FROM posts WHERE id=?', [id])
     end
 
     def find_by_tag(tag)
       sql = <<-EOT
-        SELECT posts.id, title, content FROM posts 
+        SELECT posts.id, title, content FROM posts
           LEFT JOIN post_tags ON posts.id=post_tags.post_id
           LEFT JOIN tags ON post_tags.tag_id=tags.id
         WHERE tags.name = ?
       EOT
-      $db.execute(sql, [tag]).map do |row|
+      DB.execute(sql, [tag]).map do |row|
         Post.build_from_db row
       end
     end
@@ -42,9 +41,9 @@ class Post
     def insert(post)
       data = [post.title, post.content]
 
-      $db.transaction do 
-        $db.execute("INSERT INTO posts(title, content) VALUES (?, ?)", data)
-        post_id = $db.execute('SELECT last_insert_rowid()');
+      DB.transaction do
+        DB.execute('INSERT INTO posts(title, content) VALUES (?, ?)', data)
+        post_id = DB.execute('SELECT last_insert_rowid()')
 
         post.tags.each do |tag|
           Tag.insert_if_not_exists tag, post_id

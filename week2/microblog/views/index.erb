@@ -14,8 +14,8 @@
 <h3>Posts</h3>
 
 <% if posts.present? %>
-    <% posts.each do |post_id, post| %>
-        <%= erb :_post_list, locals: { post: post, post_id: post_id } %>
+    <% posts.each do |post| %>
+        <%= erb :_post_list, locals: { post: post, post_id: post.id } %>
     <% end %>
 <% else %>
     <p>No posts exist yet.</p>

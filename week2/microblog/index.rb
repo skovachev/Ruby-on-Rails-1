@@ -8,7 +8,7 @@ set :public_folder, proc { File.join(root, 'public') }
 
 # show posts list
 get '/' do
-  all_posts = app.posts
+  all_posts = app.all_posts.compact
   tags = app.all_tags
   erb :index, locals: { posts: all_posts, tags: tags }
 end

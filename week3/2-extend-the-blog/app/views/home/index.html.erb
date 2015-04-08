@@ -1,0 +1,23 @@
+<h1>Microblog</h1>
+
+<a href="/posts/new" class="btn btn-primary">Add post</a>
+
+<% if @tags.present? %>
+    <h3>Tags</h3>
+    <p>
+        <% @tags.each do |tag| %>
+            <a href="/search/<%= tag.name %>" class="btn btn-link"><%= tag.name %></a>
+        <% end %>
+    </p>
+<% end %>
+
+<h3>Posts</h3>
+
+<% if @posts.present? %>
+    <% console %>
+    <% @posts.each do |post| %>
+        <%= render partial: '/post_list', locals: { post: post, post_id: post.id } %>
+    <% end %>
+<% else %>
+    <p>No posts exist yet.</p>
+<% end %>

@@ -1,0 +1,11 @@
+<%= render '/back_button' %>
+
+<h3>Posts with tag &quot;<%= @tag.name %>&quot;</h3>
+
+<% if @posts.present? %>
+    <% @posts.each do |post| %>
+      <%= render partial: '/post_list', locals: { post: post, post_id: post.id } %>
+    <% end %>
+<% else %>
+    <p>No posts exist for this tag yet.</p>
+<% end %>

@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   get 'posts/:id' => 'posts#show'
   delete 'posts/:id' => 'posts#destroy'
 
+  get 'photos' => 'photos#index'
   get 'photos/new'
   post 'photos/create'
-  # get 'photos/:id' => 'photos#show'
-  # delete 'photos/:id' => 'photos#destroy'
+  get 'photos/:id' => 'posts#show'
 
   get 'search/:tag' => 'search#tag'
 

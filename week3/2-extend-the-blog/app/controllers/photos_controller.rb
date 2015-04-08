@@ -3,6 +3,10 @@ class PhotosController < ApplicationController
   def new
   end
 
+  def index
+    @photos = Post.where(data_type: 'Photo')
+  end
+
   def create
     post = Post.create(post_params)
     photo = Photo.create(photo_params)

@@ -5,7 +5,10 @@ class PostsController < ApplicationController
 
   def create
     post = Post.create(post_params)
-    post_invalid = post.blank? || post.invalid?
+    article = Article.create(article_params)
+    post.update_attribute(:data, article)
+
+    post_invalid = post.blank? || post.invalid? || article.blank? || article.invalid?
 
     unless post_invalid
       # parse post tags
@@ -23,18 +26,26 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    Post.delete(params[:id])
+    post = Post.find(params[:id])
+    unless post.nil?
+      post.data.delete
+      post.delete
+    end
     redirect_to :root
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title)
+  end
+
+  def article_params
+    params.require(:post).permit(:content)
   end
 
   def process_post_tags(post)
-    post.content.scan(/#(\w+)/).flatten.each do |tag|
+    post.data.content.scan(/#(\w+)/).flatten.each do |tag|
       t = Tag.find_by(name: tag)
       t = Tag.create(name: tag) if t.nil?
       post.tags << t

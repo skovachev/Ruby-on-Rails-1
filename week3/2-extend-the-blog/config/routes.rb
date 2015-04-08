@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   get 'posts/:id' => 'posts#show'
   delete 'posts/:id' => 'posts#destroy'
 
+  get 'photos/new'
+  post 'photos/create'
+  # get 'photos/:id' => 'photos#show'
+  # delete 'photos/:id' => 'photos#destroy'
+
   get 'search/:tag' => 'search#tag'
 
   # custom error route

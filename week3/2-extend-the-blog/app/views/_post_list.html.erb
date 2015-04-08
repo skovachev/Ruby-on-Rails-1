@@ -10,12 +10,12 @@
     </div>
         
     <div class="panel-body">
-        <%= post.content %>
+        <%= render partial: post.data_template, locals: { data: post.data, post: post } %>
     </div>
     
     <div class="panel-footer tags">
         <% post.tags.each do |tag| %>
-            <span class="label label-default"><%= tag.name %></span>
+            <span class="label label-default"><%= tag %></span>
         <% end %>
     </div>
 </div>

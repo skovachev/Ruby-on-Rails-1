@@ -1,8 +1,14 @@
+# Post class
 class Post < ActiveRecord::Base
-    # attr_accessor :title, :content
+  belongs_to :data, polymorphic: true
+  validates :title, presence: true
+  has_and_belongs_to_many :tags
 
-    validates :title, :presence => true
-    validates :content, :presence => true, :length => {:in => 3..200}
+  def is? (type)
+    data_type.eql? type
+  end
 
-    has_and_belongs_to_many :tags
+  def data_template
+    '/posts/' + data_type.downcase
+  end
 end

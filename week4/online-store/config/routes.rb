@@ -20,4 +20,14 @@ Rails.application.routes.draw do
   put       'categories/:index',                to: 'categories#update'
   delete    'categories/:index',                to: 'categories#destroy'
 
+  # resource :products
+  get       'products/count',                 to: 'products#count'
+  get       'products/:index',                to: 'products#get'
+  get       'products/range/:index/:count',   to: 'products#range_offset_count'
+  get       'products/range/:index',          to: 'products#range_offset'
+  get       'products',                       to: 'products#index'
+  post      'products/new',                   to: 'products#create'
+  put       'products/:index',                to: 'products#update'
+  delete    'products/:index',                to: 'products#destroy'
+
 end

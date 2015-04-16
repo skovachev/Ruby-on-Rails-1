@@ -30,4 +30,7 @@ Rails.application.routes.draw do
   put       'products/:index',                to: 'products#update'
   delete    'products/:index',                to: 'products#destroy'
 
+  get 'search/:type/:slug',           to: 'search#search'
+  get 'search/:type/:property/:slug', to: 'search#search_property'
+
 end

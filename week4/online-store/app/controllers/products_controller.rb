@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
   end
 
   def get
-    render json: Product.find(params[:index])
+    render json: Product.find(params[:id])
   end
 
   def range_offset_count
@@ -25,13 +25,13 @@ class ProductsController < ApplicationController
   end
 
   def update
-    product = Product.find(params[:index])
+    product = Product.find(params[:id])
     product.update(product_params)
     render json: product
   end
 
   def destroy
-    product = Product.find(params[:index])
+    product = Product.find(params[:id])
     product.destroy
     render json: true
   end

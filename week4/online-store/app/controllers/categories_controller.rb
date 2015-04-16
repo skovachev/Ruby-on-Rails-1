@@ -8,8 +8,8 @@ class CategoriesController < ApplicationController
     render json: Category.all
   end
 
-  def get
-    render json: Category.find(params[:index])
+  def show
+    render json: Category.find(params[:id])
   end
 
   def range_offset_count
@@ -25,13 +25,13 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    category = Category.find(params[:index])
+    category = Category.find(params[:id])
     category.update(category_params)
     render json: category
   end
 
   def destroy
-    category = Category.find(params[:index])
+    category = Category.find(params[:id])
     category.destroy
     render json: true
   end

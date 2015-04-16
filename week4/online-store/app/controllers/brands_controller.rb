@@ -8,8 +8,8 @@ class BrandsController < ApplicationController
     render json: Brand.all
   end
 
-  def get
-    render json: Brand.find(params[:index])
+  def show
+    render json: Brand.find(params[:id])
   end
 
   def range_offset_count
@@ -25,13 +25,13 @@ class BrandsController < ApplicationController
   end
 
   def update
-    brand = Brand.find(params[:index])
+    brand = Brand.find(params[:id])
     brand.update(brand_params)
     render json: brand
   end
 
   def destroy
-    brand = Brand.find(params[:index])
+    brand = Brand.find(params[:id])
     brand.destroy
     render json: true
   end

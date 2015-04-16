@@ -7,8 +7,8 @@ class CreateProducts < ActiveRecord::Migration
       t.decimal :price, null: false
       t.timestamps null: false
 
-      t.integer :category_id, null: false, index: true
-      t.integer :brand_id, null: false, index: true
+      t.belongs_to :category, null: false
+      t.belongs_to :brand, null: false
     end
   end
 end

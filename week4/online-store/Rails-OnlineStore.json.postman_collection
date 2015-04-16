@@ -1,0 +1,536 @@
+{
+	"id": "df38639b-6c03-56b1-c3c5-147fbe6eece7",
+	"name": "Rails-OnlineStore",
+	"description": "",
+	"order": [
+		"dbf1a69f-4ed4-04ef-8e62-fb77be4d1844",
+		"712ccbe6-9ff6-37cc-edaa-aa6516c8a8d1",
+		"9cf3f52b-45a7-db35-c1ef-eb002f5a3553",
+		"894220c5-1869-3c22-2953-84355824dbd7",
+		"05fdd6f3-d00f-bb94-4ad5-9921e6c4ea58",
+		"3e8f04cb-a270-6d71-193e-eac06571bd23",
+		"b1ed7c45-7499-11ee-e858-eabe118fe607",
+		"0637ef80-eab5-99a9-7d30-14e601456f66",
+		"a9144fed-545a-f0a9-b5d2-ce71cc9351f5",
+		"8d523b36-5c15-5f50-edb5-bbfe7c892c96",
+		"73ffa9b4-4341-da9e-3664-f31d736c634a",
+		"36f467fa-188a-63e7-1e02-8c586611a7ea",
+		"f8fbd0ed-d855-6c00-a384-786e0040bca2",
+		"37e2dfca-742b-ea0b-b2af-e195dd2edbd3",
+		"336b9c0d-a9bb-3b48-57a2-03eb0916ec88"
+	],
+	"folders": [],
+	"timestamp": 1429199099206,
+	"synced": false,
+	"owner": 0,
+	"sharedWithTeam": false,
+	"subscribed": false,
+	"remoteLink": "",
+	"public": false,
+	"write": true,
+	"requests": [
+		{
+			"id": "05fdd6f3-d00f-bb94-4ad5-9921e6c4ea58",
+			"headers": "",
+			"url": "http://localhost:3000/brands/2",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "DELETE",
+			"collectionId": "df38639b-6c03-56b1-c3c5-147fbe6eece7",
+			"data": [],
+			"dataMode": "params",
+			"name": "delete brand",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1429199626888,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionOwner": 0,
+			"synced": false
+		},
+		{
+			"id": "0637ef80-eab5-99a9-7d30-14e601456f66",
+			"headers": "",
+			"url": "http://localhost:3000/categories/1",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "category[name]",
+					"value": "Test Category",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1429200711583,
+			"name": "get category",
+			"description": "",
+			"collectionId": "df38639b-6c03-56b1-c3c5-147fbe6eece7",
+			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "336b9c0d-a9bb-3b48-57a2-03eb0916ec88",
+			"headers": "",
+			"url": "http://localhost:3000/search/brand/name/updated",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "product[name]",
+					"value": "Test Product",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "product[price]",
+					"value": "2.30",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "product[stock]",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "product[brand_id]",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "product[category_id]",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1429202317461,
+			"name": "search",
+			"description": "",
+			"collectionId": "df38639b-6c03-56b1-c3c5-147fbe6eece7",
+			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "36f467fa-188a-63e7-1e02-8c586611a7ea",
+			"headers": "",
+			"url": "http://localhost:3000/categories/1",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1429200813734,
+			"name": "delete category",
+			"description": "",
+			"collectionId": "df38639b-6c03-56b1-c3c5-147fbe6eece7",
+			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "37e2dfca-742b-ea0b-b2af-e195dd2edbd3",
+			"headers": "",
+			"url": "http://localhost:3000/products/1",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "product[name]",
+					"value": "Test Product",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "product[price]",
+					"value": "2.30",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "product[stock]",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "product[brand_id]",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "product[category_id]",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1429201193300,
+			"name": "get product",
+			"description": "",
+			"collectionId": "df38639b-6c03-56b1-c3c5-147fbe6eece7",
+			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "3e8f04cb-a270-6d71-193e-eac06571bd23",
+			"headers": "",
+			"url": "http://localhost:3000/brands/range/2/2",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "df38639b-6c03-56b1-c3c5-147fbe6eece7",
+			"data": [
+				{
+					"key": "brand[name]",
+					"value": "Test Brand 6",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "brand[short_description]",
+					"value": "Test description 6",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "get brand range",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1429199692167,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionOwner": 0,
+			"synced": false
+		},
+		{
+			"id": "712ccbe6-9ff6-37cc-edaa-aa6516c8a8d1",
+			"headers": "",
+			"url": "http://localhost:3000/brands/1",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "df38639b-6c03-56b1-c3c5-147fbe6eece7",
+			"data": [
+				{
+					"key": "brand[name]",
+					"value": "Test Brand 2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "brand[short_description]",
+					"value": "Test description 2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "get brand",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1429199429447,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionOwner": 0,
+			"synced": false
+		},
+		{
+			"id": "73ffa9b4-4341-da9e-3664-f31d736c634a",
+			"headers": "",
+			"url": "http://localhost:3000/categories/range/2/2",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "category[name]",
+					"value": "Test Category updated",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1429200779682,
+			"name": "get categories range",
+			"description": "",
+			"collectionId": "df38639b-6c03-56b1-c3c5-147fbe6eece7",
+			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "894220c5-1869-3c22-2953-84355824dbd7",
+			"headers": "",
+			"url": "http://localhost:3000/brands/1",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "PUT",
+			"collectionId": "df38639b-6c03-56b1-c3c5-147fbe6eece7",
+			"data": [
+				{
+					"key": "brand[name]",
+					"value": "Test Brand updated",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "brand[short_description]",
+					"value": "Test description updated",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "update brand",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1429199572210,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionOwner": 0,
+			"synced": false
+		},
+		{
+			"id": "8d523b36-5c15-5f50-edb5-bbfe7c892c96",
+			"headers": "",
+			"url": "http://localhost:3000/categories/1",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "PUT",
+			"data": [
+				{
+					"key": "category[name]",
+					"value": "Test Category updated",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1429200755111,
+			"name": "update category",
+			"description": "",
+			"collectionId": "df38639b-6c03-56b1-c3c5-147fbe6eece7",
+			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "9cf3f52b-45a7-db35-c1ef-eb002f5a3553",
+			"headers": "",
+			"url": "http://localhost:3000/brands",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "df38639b-6c03-56b1-c3c5-147fbe6eece7",
+			"data": [
+				{
+					"key": "brand[name]",
+					"value": "Test Brand 2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "brand[short_description]",
+					"value": "Test description 2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "get all brands",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1429199468135,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionOwner": 0,
+			"synced": false
+		},
+		{
+			"id": "a9144fed-545a-f0a9-b5d2-ce71cc9351f5",
+			"headers": "",
+			"url": "http://localhost:3000/categories",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "category[name]",
+					"value": "Test Category",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1429200731114,
+			"name": "get all categories",
+			"description": "",
+			"collectionId": "df38639b-6c03-56b1-c3c5-147fbe6eece7",
+			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "b1ed7c45-7499-11ee-e858-eabe118fe607",
+			"headers": "",
+			"url": "http://localhost:3000/categories/new",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "category[name]",
+					"value": "Test Category",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1429200667329,
+			"name": "create category",
+			"description": "",
+			"collectionId": "df38639b-6c03-56b1-c3c5-147fbe6eece7",
+			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "dbf1a69f-4ed4-04ef-8e62-fb77be4d1844",
+			"headers": "",
+			"url": "http://localhost:3000/brands/new",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "brand[name]",
+					"value": "Test Brand 2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "brand[short_description]",
+					"value": "Test description 2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1429199378055,
+			"name": "create brand",
+			"description": "",
+			"collectionId": "df38639b-6c03-56b1-c3c5-147fbe6eece7",
+			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "f8fbd0ed-d855-6c00-a384-786e0040bca2",
+			"headers": "",
+			"url": "http://localhost:3000/products/new",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "product[name]",
+					"value": "Test Product",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "product[price]",
+					"value": "2.30",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "product[stock]",
+					"value": "5",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "product[brand_id]",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "product[category_id]",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1429201164276,
+			"name": "create product",
+			"description": "",
+			"collectionId": "df38639b-6c03-56b1-c3c5-147fbe6eece7",
+			"responses": [],
+			"synced": false
+		}
+	]
+}

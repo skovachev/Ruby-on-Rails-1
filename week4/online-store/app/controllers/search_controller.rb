@@ -13,21 +13,12 @@ class SearchController < ApplicationController
   private
 
   def search_data(type, where)
-    type = type.to_sym
-    return [] unless [:product, :category, :brand].include? type
+    type_symbol = type.to_sym
+    return [] unless [:product, :category, :brand].include? type_symbol
 
-    data = case type
-    when :product
-      Product.all
-    when :category
-      Category.all
-    when :brand
-      Brand.all
-    else
-      []
-    end
-
-    data.select do |item|
+    clazz = type.capitalize.constantize
+    
+    clazz.all.select do |item|
       prop = item[where[:property]].downcase
       slug = where[:slug].downcase
       (item.attributes.has_key? where[:property]) && (prop.include? slug)

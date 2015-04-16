@@ -1,6 +1,6 @@
 # Products controller
 class ProductsController < ApplicationController
-  def count 
+  def count
     Product.count
   end
 
@@ -39,6 +39,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :stock, :price, :category_id, :brand_id)
+    params.require(:product)
+          .permit(:name, :stock, :price, :category_id, :brand_id)
   end
 end

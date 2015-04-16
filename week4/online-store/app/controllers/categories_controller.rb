@@ -1,6 +1,6 @@
 # Categories controller
 class CategoriesController < ApplicationController
-  def count 
+  def count
     Category.count
   end
 

@@ -1,41 +1,43 @@
 # Solutions controller
 class SolutionsController < ApplicationController
-  before_filter :load_related_models, except: [ :destroy ]
-
   def index
-    @solutions = Solution.where(task_id: @task.id)
+    @struct = Tasks::Solutions::Structure.from_request(params)
+    @struct.solutions = Solution.where(task_id: @struct.task.id)
   end
 
   def new
-    @solution = Solution.new
+    @struct = Tasks::Solutions::Structure.from_request(params)
   end
 
   def show
-    @solution = Solution.find(params[:id])
+    @struct = Tasks::Solutions::Structure.from_request(params)
   end
 
   def edit
-    @solution = Solution.find(params[:id])
+    @struct = Tasks::Solutions::Structure.from_request(params)
   end
 
   def create
-    @solution = Solution.new(solution_params)
-    @solution.task = @task
+    @struct = Tasks::Solutions::Structure.from_request(params)
 
-    unless @solution.save
+    solution = Solution.new(solution_params)
+    solution.task = @struct.task
+    @struct.solution = solution
+
+    unless solution.save
       render 'new'
     else
       flash[:notice_ok] = 'Solution saved successfully.'
-      redirect_to action: 'show', id: @solution.id
+      redirect_to action: 'show', id: @struct.solution.id
     end  
   end
 
   def update
-    @solution = Solution.find(params[:id])
-    unless @solution.update_attributes(solution_params)
+    @struct = Tasks::Solutions::Structure.from_request(params)
+    unless @struct.solution.update_attributes(solution_params)
       render 'edit'
     else
-      redirect_to action: "show", id: @solution.id
+      redirect_to action: "show", id: @struct.solution.id
     end
   end
 
@@ -50,10 +52,5 @@ class SolutionsController < ApplicationController
 
   def solution_params
     params.require(:solution).permit(:body)
-  end
-
-  def load_related_models
-    @lecture = Lecture.find(params[:lecture_id])
-    @task = Task.find(params[:task_id])
   end
 end

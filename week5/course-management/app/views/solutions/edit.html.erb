@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-5">
-        <%= form_for [@lecture, @task, @solution], method: :put do |f| %>
+        <%= form_for [@struct.lecture, @struct.task, @struct.solution], method: :put do |f| %>
             <div class="panel panel-default">
                 <div class="panel-body form-horizontal">
                     <div class="form-group <%= field_valid(:body, f) %>">

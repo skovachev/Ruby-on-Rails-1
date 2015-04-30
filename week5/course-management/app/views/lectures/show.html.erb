@@ -13,6 +13,7 @@
 <p>
     <%= form_tag("/lectures/#{@lecture.id}", method: "post") do %>
         <input name="_method" type="hidden" value="delete" />
-        <button type='submit' class='btn btn-danger'>Delete lecture</button>
+        <a href="/lectures/#{@lecture.id}/edit" class="btn btn-xs btn-default">Edit</a>
+        <button type='submit' class='btn btn-danger btn-xs'>Delete lecture</button>
     <% end %>
 </p>

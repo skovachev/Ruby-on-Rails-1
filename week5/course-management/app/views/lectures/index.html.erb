@@ -13,7 +13,11 @@
         <% @lectures.each do |lecture| %>
             <tr>
                 <td><%= lecture.name %></td>
-                <td><a href="/lectures/<%= lecture.id %>" class="btn btn-link btn-xs">View</a></td>
+                <td class='buttons'>
+                    <a href="/lectures/<%= lecture.id %>" class="btn btn-xs btn-default">View</a>
+                    <a href="/lectures/<%= lecture.id %>/edit" class="btn btn-xs btn-default">Edit</a>
+                    <a href="/lectures/<%= lecture.id %>/tasks" class="btn btn-xs btn-info">Tasks</a>
+                </td>
             </tr>
         <% end %>
     </table>

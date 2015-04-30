@@ -28,10 +28,12 @@ class LecturesController < ApplicationController
   end
 
   def update
-    lecture = Lecture.find(params[:id])
-    lecture.update(lecture_params)
-    # TODO: check if valid
-    redirect_to action: "show", id: lecture.id
+    @lecture = Lecture.find(params[:id])
+    unless @lecture.update_attributes(lecture_params)
+      render 'edit'
+    else
+      redirect_to action: "show", id: @lecture.id
+    end
   end
 
   def destroy

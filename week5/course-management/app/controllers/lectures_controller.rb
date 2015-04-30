@@ -19,20 +19,20 @@ class LecturesController < ApplicationController
   def create
     @lecture = Lecture.new(lecture_params)
 
-    unless @lecture.save
-      render 'new'
-    else
+    if @lecture.save
       flash[:notice_ok] = 'Lecture saved successfully.'
       redirect_to action: 'show', id: @lecture.id
+    else
+      render 'new'      
     end  
   end
 
   def update
     @lecture = Lecture.find(params[:id])
-    unless @lecture.update_attributes(lecture_params)
-      render 'edit'
+    if @lecture.update_attributes(lecture_params)
+      redirect_to action: "show", id: @lecture.id      
     else
-      redirect_to action: "show", id: @lecture.id
+      render 'edit'
     end
   end
 

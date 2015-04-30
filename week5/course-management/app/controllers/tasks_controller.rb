@@ -24,20 +24,20 @@ class TasksController < ApplicationController
     task.lecture = @struct.lecture
     @struct.task = task
 
-    unless task.save
-      render 'new'
-    else
+    if task.save
       flash[:notice_ok] = 'Task saved successfully.'
       redirect_to action: 'show', id: @struct.task.id
+    else
+      render 'new'
     end  
   end
 
   def update
     @struct = Tasks::Structure.from_request(params)
-    unless @struct.task.update_attributes(task_params)
-      render 'edit'
+    if @struct.task.update_attributes(task_params)
+      redirect_to action: "show", id: @struct.task.id      
     else
-      redirect_to action: "show", id: @struct.task.id
+      render 'edit'
     end
   end
 

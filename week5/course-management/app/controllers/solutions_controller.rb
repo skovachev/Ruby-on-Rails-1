@@ -24,20 +24,20 @@ class SolutionsController < ApplicationController
     solution.task = @struct.task
     @struct.solution = solution
 
-    unless solution.save
-      render 'new'
-    else
+    if solution.save
       flash[:notice_ok] = 'Solution saved successfully.'
       redirect_to action: 'show', id: @struct.solution.id
+    else
+      render 'new'      
     end  
   end
 
   def update
     @struct = Tasks::Solutions::Structure.from_request(params)
-    unless @struct.solution.update_attributes(solution_params)
-      render 'edit'
+    if @struct.solution.update_attributes(solution_params)
+      redirect_to action: "show", id: @struct.solution.id      
     else
-      redirect_to action: "show", id: @struct.solution.id
+      render 'edit'
     end
   end
 

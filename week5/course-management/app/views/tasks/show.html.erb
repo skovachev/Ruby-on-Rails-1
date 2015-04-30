@@ -1,0 +1,19 @@
+<%= render 'back_button' %>
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3><%= @task.name %></h3>        
+    </div>
+        
+    <div class="panel-body">
+        <p><%= @task.description %></p>
+        <p><small><%= @lecture.name %></small></p>
+    </div>
+</div>
+
+<p>
+    <%= form_tag("/lectures/#{@lecture.id}/tasks/#{@task.id}", method: "delete") do %>
+        <a href="/lectures/<%= @lecture.id %>/tasks/<%= @task.id %>/edit" class="btn btn-xs btn-default">Edit</a>
+        <button type='submit' class='btn btn-danger btn-xs'>Delete task</button>
+    <% end %>
+</p>

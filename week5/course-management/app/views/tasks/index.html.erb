@@ -1,0 +1,27 @@
+<%= render '/back_button' %>
+
+<a href="/lectures/<%= @lecture.id %>/tasks/new" class="btn btn-primary">Add task</a>
+
+<h3>Tasks</h3>
+<h4><%= @lecture.name %></h4>
+
+<% if @tasks.present? %>
+    <table class="table table-hover table-striped table-condensed">
+        <tr>
+            <th>Name</th>
+            <th></th>
+        </tr>
+        <% @tasks.each do |task| %>
+            <tr>
+                <td><%= task.name %></td>
+                <td class='buttons'>
+                    <a href="/lectures/<%= @lecture.id %>/tasks/<%= task.id %>" class="btn btn-xs btn-default">View</a>
+                    <a href="/lectures/<%= @lecture.id %>/tasks/<%= task.id %>/edit" class="btn btn-xs btn-default">Edit</a>
+                    <a href="/lectures/<%= @lecture.id %>/tasks/<%= task.id %>/solutions" class="btn btn-xs btn-info">Solutions</a>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+<% else %>
+    <p>No tasks exist yet.</p>
+<% end %>

@@ -1,0 +1,19 @@
+<%= render 'back_button' %>
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3>Solution #<%= @solution.id %></h3>        
+    </div>
+        
+    <div class="panel-body">
+        <p><%= @solution.body %></p>
+        <p><small><%= @lecture.name %> - <%= @task.name %></small></p>
+    </div>
+</div>
+
+<p>
+    <%= form_tag(lecture_task_solution_path(@lecture, @task, @solution), method: "delete") do %>
+        <a href="<%= lecture_task_solution_path(@lecture, @task, @solution) %>/edit" class="btn btn-xs btn-default">Edit</a>
+        <button type='submit' class='btn btn-danger btn-xs'>Delete solution</button>
+    <% end %>
+</p>

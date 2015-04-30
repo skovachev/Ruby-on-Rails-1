@@ -1,0 +1,26 @@
+<p><a href="<%= lecture_path @lecture %>/tasks" class='btn btn-link'>&laquo; Back to tasks</a></p>
+
+<a href="<%= lecture_task_path(@lecture, @task) %>/solutions/new" class="btn btn-primary">Add solution</a>
+
+<h3>Solutions</h3>
+<h4><%= @lecture.name %> - <%= @task.name %></h4>
+
+<% if @solutions.present? %>
+    <table class="table table-hover table-striped table-condensed">
+        <tr>
+            <th>Name</th>
+            <th></th>
+        </tr>
+        <% @solutions.each do |solution| %>
+            <tr>
+                <td>Solution #<%= solution.id %></td>
+                <td class='buttons'>
+                    <a href="<%= lecture_task_solution_path(@lecture, @task, solution) %>" class="btn btn-xs btn-default">View</a>
+                    <a href="<%= lecture_task_solution_path(@lecture, @task, solution) %>/edit" class="btn btn-xs btn-default">Edit</a>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+<% else %>
+    <p>No solutions exist yet.</p>
+<% end %>

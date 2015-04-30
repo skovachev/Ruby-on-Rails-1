@@ -1,12 +1,12 @@
 <%= render '/back_button' %>
 
-<div class="panel">
+<div class="panel panel-default">
     <div class="panel-heading">
-        <h3><%= @lecture.name %></h3>        
+        <h3 class='panel-title'><%= @lecture.name %></h3>        
     </div>
         
     <div class="panel-body">
-        <p><%= @lecture.description %></p>
+        <%= @lecture.description %>
     </div>
 </div>
 

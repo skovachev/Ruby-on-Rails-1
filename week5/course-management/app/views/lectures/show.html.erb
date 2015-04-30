@@ -11,8 +11,8 @@
 </div>
 
 <p>
-    <%= form_tag("/lectures/#{@lecture.id}", method: "delete") do %>
-        <a href="/lectures/<%= @lecture.id %>/edit" class="btn btn-xs btn-default">Edit</a>
+    <%= form_tag(lecture_path(@lecture), method: "delete") do %>
+        <a href="<%= lecture_path(@lecture) %>/edit" class="btn btn-xs btn-default">Edit</a>
         <button type='submit' class='btn btn-danger btn-xs'>Delete lecture</button>
     <% end %>
 </p>

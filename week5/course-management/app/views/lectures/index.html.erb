@@ -12,9 +12,9 @@
             <tr>
                 <td><%= lecture.name %></td>
                 <td class='buttons'>
-                    <a href="/lectures/<%= lecture.id %>" class="btn btn-xs btn-default">View</a>
-                    <a href="/lectures/<%= lecture.id %>/edit" class="btn btn-xs btn-default">Edit</a>
-                    <a href="/lectures/<%= lecture.id %>/tasks" class="btn btn-xs btn-info">Tasks</a>
+                    <a href="<%= lecture_path lecture %>" class="btn btn-xs btn-default">View</a>
+                    <a href="<%= lecture_path lecture %>/edit" class="btn btn-xs btn-default">Edit</a>
+                    <a href="<%= lecture_path lecture %>/tasks" class="btn btn-xs btn-info">Tasks</a>
                 </td>
             </tr>
         <% end %>

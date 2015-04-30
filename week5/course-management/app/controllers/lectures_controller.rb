@@ -5,6 +5,7 @@ class LecturesController < ApplicationController
   end
 
   def new
+    @lecture = Lecture.new
   end
 
   def show
@@ -16,14 +17,13 @@ class LecturesController < ApplicationController
   end
 
   def create
-    lecture = Lecture.new(lecture_params)
+    @lecture = Lecture.new(lecture_params)
 
-    unless lecture.save
-      flash[:notice_err] = 'Invalid data submitted.'
-      flash[:errors] = lecture.errors
-      redirect_to action: 'new'
+    unless @lecture.save
+      render 'new'
     else
-      redirect_to action: 'show', id: lecture.id
+      flash[:notice_ok] = 'Lecture saved successfully.'
+      redirect_to action: 'show', id: @lecture.id
     end  
   end
 

@@ -1,7 +1,9 @@
 module ApplicationHelper
-    def field_valid(field)
-        if flash[:errors]
-            if flash[:errors].include? field
+    def field_valid(field, form = nil)
+        errors = flash[:errors] if form.nil?
+        errors = form.object.errors unless form.nil?
+        if errors && errors.any?
+            if errors.include? field
                 'has-error'
             else
                 'has-success'
@@ -9,10 +11,12 @@ module ApplicationHelper
         end
     end
 
-    def field_error_message(field)
-        if flash[:errors] && (flash[:errors].include? field)
+    def field_error_message(field, form = nil)
+        errors = flash[:errors] if form.nil?
+        errors = form.object.errors unless form.nil?
+        if errors && errors.any? && (errors.include? field)
             output = ''
-            flash[:errors][field].each do |message|
+            errors[field].each do |message|
                 output = output + (render partial: '/form_error_message', locals: { message: message })
             end
             output.html_safe

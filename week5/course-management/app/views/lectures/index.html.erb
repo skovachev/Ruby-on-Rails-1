@@ -1,0 +1,22 @@
+<h1>Course Management</h1>
+
+<a href="/lectures/new" class="btn btn-primary">Add lecture</a>
+
+<h3>Lectures</h3>
+
+<% if @lectures.present? %>
+    <table class="table table-hover table-striped table-condensed">
+        <tr>
+            <th>Name</th>
+            <th></th>
+        </tr>
+        <% @lectures.each do |lecture| %>
+            <tr>
+                <td><%= lecture.name %></td>
+                <td><a href="/lectures/<%= lecture.id %>" class="btn btn-link btn-xs">View</a></td>
+            </tr>
+        <% end %>
+    </table>
+<% else %>
+    <p>No lectures exist yet.</p>
+<% end %>

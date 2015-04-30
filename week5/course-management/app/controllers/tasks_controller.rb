@@ -1,41 +1,43 @@
 # Tasks controller
 class TasksController < ApplicationController
-  before_filter :load_lecture, except: [ :destroy ]
-
   def index
-    @tasks = Task.where(lecture_id: @lecture.id)
+    @struct = Tasks::Structure.from_request(params)
+    @struct.tasks = Task.where(lecture_id: @struct.lecture.id)
   end
 
   def new
-    @task = Task.new
+    @struct = Tasks::Structure.from_request(params)
   end
 
   def show
-    @task = Task.find(params[:id])
+    @struct = Tasks::Structure.from_request(params)
   end
 
   def edit
-    @task = Task.find(params[:id])
+    @struct = Tasks::Structure.from_request(params)
   end
 
   def create
-    @task = Task.new(task_params)
-    @task.lecture = @lecture
+    @struct = Tasks::Structure.from_request(params)
 
-    unless @task.save
+    task = Task.new(task_params)
+    task.lecture = @struct.lecture
+    @struct.task = task
+
+    unless task.save
       render 'new'
     else
       flash[:notice_ok] = 'Task saved successfully.'
-      redirect_to action: 'show', id: @task.id
+      redirect_to action: 'show', id: @struct.task.id
     end  
   end
 
   def update
-    @task = Task.find(params[:id])
-    unless @task.update_attributes(task_params)
+    @struct = Tasks::Structure.from_request(params)
+    unless @struct.task.update_attributes(task_params)
       render 'edit'
     else
-      redirect_to action: "show", id: @task.id
+      redirect_to action: "show", id: @struct.task.id
     end
   end
 
@@ -50,9 +52,5 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:name, :description)
-  end
-
-  def load_lecture
-    @lecture = Lecture.find(params[:lecture_id])
   end
 end

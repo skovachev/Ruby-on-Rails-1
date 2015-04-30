@@ -1,23 +1,23 @@
 <%= render '/back_button' %>
 
-<a href="<%= lecture_path(@lecture) %>/tasks/new" class="btn btn-primary">Add task</a>
+<a href="<%= lecture_path(@struct.lecture) %>/tasks/new" class="btn btn-primary">Add task</a>
 
 <h3>Tasks</h3>
-<h4><%= @lecture.name %></h4>
+<h4><%= @struct.lecture.name %></h4>
 
-<% if @tasks.present? %>
+<% if @struct.tasks.present? %>
     <table class="table table-hover table-striped table-condensed">
         <tr>
             <th>Name</th>
             <th></th>
         </tr>
-        <% @tasks.each do |task| %>
+        <% @struct.tasks.each do |task| %>
             <tr>
                 <td><%= task.name %></td>
                 <td class='buttons'>
-                    <a href="<%= lecture_task_path(@lecture, task) %>" class="btn btn-xs btn-default">View</a>
-                    <a href="<%= lecture_task_path(@lecture, task) %>/edit" class="btn btn-xs btn-default">Edit</a>
-                    <a href="<%= lecture_task_path(@lecture, task) %>/solutions" class="btn btn-xs btn-info">Solutions</a>
+                    <a href="<%= lecture_task_path(@struct.lecture, task) %>" class="btn btn-xs btn-default">View</a>
+                    <a href="<%= lecture_task_path(@struct.lecture, task) %>/edit" class="btn btn-xs btn-default">Edit</a>
+                    <a href="<%= lecture_task_path(@struct.lecture, task) %>/solutions" class="btn btn-xs btn-info">Solutions</a>
                 </td>
             </tr>
         <% end %>

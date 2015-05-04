@@ -1,0 +1,1 @@
+Rails.application.config.clients = Rails.application.config_for :clients

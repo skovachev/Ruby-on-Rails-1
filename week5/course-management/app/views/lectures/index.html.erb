@@ -1,4 +1,4 @@
-<a href="/lectures/new" class="btn btn-primary">Add lecture</a>
+<a href="<%= new_lecture_path %>" class="btn btn-primary">Add lecture</a>
 
 <h3>Lectures</h3>
 
@@ -13,8 +13,8 @@
                 <td><%= lecture.name %></td>
                 <td class='buttons'>
                     <a href="<%= lecture_path lecture %>" class="btn btn-xs btn-default">View</a>
-                    <a href="<%= lecture_path lecture %>/edit" class="btn btn-xs btn-default">Edit</a>
-                    <a href="<%= lecture_path lecture %>/tasks" class="btn btn-xs btn-info">Tasks</a>
+                    <a href="<%= edit_lecture_path lecture %>" class="btn btn-xs btn-default">Edit</a>
+                    <a href="<%= lecture_tasks_path lecture %>" class="btn btn-xs btn-info">Tasks</a>
                 </td>
             </tr>
         <% end %>

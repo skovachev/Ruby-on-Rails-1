@@ -16,7 +16,7 @@
 
 <p>
     <%= form_tag(lecture_task_path(@struct.lecture, @struct.task), method: "delete") do %>
-        <a href="<%= lecture_task_path(@struct.lecture, @struct.task) %>/edit" class="btn btn-xs btn-default">Edit</a>
+        <a href="<%= edit_lecture_task_path(@struct.lecture, @struct.task) %>" class="btn btn-xs btn-default">Edit</a>
         <button type='submit' class='btn btn-danger btn-xs'>Delete task</button>
     <% end %>
 </p>

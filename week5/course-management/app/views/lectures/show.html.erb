@@ -12,7 +12,7 @@
 
 <p>
     <%= form_tag(lecture_path(@lecture), method: "delete") do %>
-        <a href="<%= lecture_path(@lecture) %>/edit" class="btn btn-xs btn-default">Edit</a>
+        <a href="<%= edit_lecture_path(@lecture) %>" class="btn btn-xs btn-default">Edit</a>
         <button type='submit' class='btn btn-danger btn-xs'>Delete lecture</button>
     <% end %>
 </p>

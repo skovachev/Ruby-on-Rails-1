@@ -1,6 +1,6 @@
-<p><a href="<%= lecture_path @struct.lecture %>/tasks" class=''>&laquo; Back to tasks</a></p>
+<p><a href="<%= lecture_tasks_path @struct.lecture %>" class=''>&laquo; Back to tasks</a></p>
 
-<a href="<%= lecture_task_path(@struct.lecture, @struct.task) %>/solutions/new" class="btn btn-primary">Add solution</a>
+<a href="<%= new_lecture_task_solution_path(@struct.lecture, @struct.task) %>" class="btn btn-primary">Add solution</a>
 
 <h3>Solutions</h3>
 <h4><%= @struct.lecture.name %> - <%= @struct.task.name %></h4>
@@ -16,7 +16,7 @@
                 <td>Solution #<%= solution.id %></td>
                 <td class='buttons'>
                     <a href="<%= lecture_task_solution_path(@struct.lecture, @struct.task, solution) %>" class="btn btn-xs btn-default">View</a>
-                    <a href="<%= lecture_task_solution_path(@struct.lecture, @struct.task, solution) %>/edit" class="btn btn-xs btn-default">Edit</a>
+                    <a href="<%= edit_lecture_task_solution_path(@struct.lecture, @struct.task, solution) %>" class="btn btn-xs btn-default">Edit</a>
                 </td>
             </tr>
         <% end %>

@@ -1,4 +1,4 @@
-class TweetCollector
+class TweetGateway
   def initialize
     @twitter_client = Clients::Twitter.new
     @semantria_client = Clients::SemantriaClient.new
@@ -14,5 +14,14 @@ class TweetCollector
       end
     end
     tweets
+  end
+
+  def post_positive_tweet(content)
+    if @semantria_client.is_positive(content)
+      @twitter_client.post_tweet content
+      true
+    else
+      false
+    end
   end
 end

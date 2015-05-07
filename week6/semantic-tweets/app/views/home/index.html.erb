@@ -1,3 +1,24 @@
-<% @tweets.each do |tweet| %>
-    <p><%= tweet.html.html_safe %></p>
-<% end %>
+<h1>Semantic Tweets</h1>
+<h3>Load positive tweets from a Twitter account</h3>
+<p>
+    <%= form_tag("/positive-tweets", method: "get") do %>
+      <%= label_tag(:account, "Twitter handle:") %>
+      <%= text_field_tag(:account) %>
+      <br>
+      <%= label_tag(:count, "Number of tweets to process:") %>
+      <%= text_field_tag(:count, 30) %>
+      <br>
+      <%= submit_tag("Find positive tweets") %>
+    <% end %>
+</p>
+
+<h3>Post a new tweet, but only if it's positive</h3>
+<p>
+    <%= form_tag("/post-positive-tweet", method: "post") do %>
+      <%= label_tag(:tweet, "Tweet content:") %>
+      <br>      
+      <%= text_area_tag(:tweet, nil, size: "60x12") %>
+      <br>
+      <%= submit_tag("Post positive tweet") %>
+    <% end %>
+</p>

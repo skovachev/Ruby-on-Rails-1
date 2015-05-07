@@ -29,10 +29,24 @@ module Clients
       load_config :semantria
     end
 
+    def is_positive(content)
+      session = create_session
+      tweet_id = rand(10 ** 10).to_s.rjust(10, '0')
+
+      doc = { id: tweet_id, text: content}
+      status = session.queueDocument(doc)
+
+      if status == 202
+        result = session.getProcessedDocuments()
+        has_result = (result.is_a? Array) && (result.length > 0)
+        return has_result && result[0]['sentiment_score'] > 0
+      end
+
+      false
+    end
+
     def filter_positive_tweets(tweets)
-      session = Semantria::Session.new(@consumer_key, @consumer_secret, 'SemanticTweets', true)
-      callback = SessionCallbackHandler.new()
-      session.setCallbackHandler(callback)
+      session = create_session
 
       tweets.each do |tweet|
         doc = tweet.as_json
@@ -65,6 +79,15 @@ module Clients
         tweet.analysis_data = results[tweet.id]
         tweet.analysis_data['sentiment_score'] > 0
       end
+    end
+
+    private
+
+    def create_session
+      session = Semantria::Session.new(@consumer_key, @consumer_secret, 'SemanticTweets', true)
+      callback = SessionCallbackHandler.new()
+      session.setCallbackHandler(callback)
+      session
     end
   end
 end

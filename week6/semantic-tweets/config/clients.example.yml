@@ -1,10 +1,12 @@
 development:
+    # create app at https://apps.twitter.com and fill out fields below
     twitter:
         api_key: ''
         api_secret: ''
         access_token: ''
         access_token_secret: ''
 
+    # create account at semantria website and fill out fields
     semantria:
         api_key: ''
         api_secret: ''

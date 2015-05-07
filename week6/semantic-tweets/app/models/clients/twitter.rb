@@ -16,20 +16,26 @@ module Clients
     end
 
     def get_embed_html(tweet)
-      embed_url = 'https://api.twitter.com/1.1/statuses/oembed.json?id=' + tweet.id.to_s
+      embed_url = 'https://api.twitter.com/1.1/statuses/oembed.json?hide_thread=true&id=' + tweet.id.to_s
       embed_data = JSON.parse(request(embed_url).body)
       embed_data['html']
     end
 
+    def post_tweet(content)
+      url = "https://api.twitter.com/1.1/statuses/update.json"
+      data = { status: content }
+      request(url, :post, data)
+    end
+
     protected
 
-    def request(url)
+    def request(url, method = :get, params = [])
       token = prepare_access_token(
         Rails.application.config.clients['twitter']['access_token'],
         Rails.application.config.clients['twitter']['access_token_secret']
       )
 
-      token.request(:get, url)
+      token.request(method, url, params)
     end
 
     def prepare_access_token(oauth_token, oauth_token_secret)

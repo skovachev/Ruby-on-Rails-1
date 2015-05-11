@@ -1,0 +1,18 @@
+<h3>Sign in</h3>
+
+<%= form_tag("/sign_in", method: "post") do %>
+  <%= label_tag(:email, "Email:") %>
+  <%= text_field_tag(:email) %>
+  <br>
+
+  <%= label_tag(:password, "Password:") %>
+  <%= password_field_tag(:password) %>
+  <br>
+
+    <%= label_tag(:remember, "Remember me") %>
+  <%= check_box_tag(:remember) %>
+  <br>
+  <%= submit_tag("Sign in") %>
+<% end %>
+
+<%= link_to 'Sign up', '/sign_up' %>

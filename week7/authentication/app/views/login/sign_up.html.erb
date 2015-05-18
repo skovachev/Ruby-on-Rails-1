@@ -1,12 +1,12 @@
 <h3>Sign up</h3>
 
 <% @user.errors.full_messages.each do |message| %>
-<%= message %>
+  <%= message %>
 <% end %>
 
 <%= form_for @user, url: "/sign_up", method: "post" do |f| %>
 
-    <%= label_tag(:first_name, "First name:") %>
+  <%= label_tag(:first_name, "First name:") %>
   <%= f.text_field(:first_name) %>
   <br>
 

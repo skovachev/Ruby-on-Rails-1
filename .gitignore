@@ -35,3 +35,4 @@ week3/2-extend-the-blog/tmp
 week3/2-extend-the-blog/log
 tmp
 clients.yml
+*.log
